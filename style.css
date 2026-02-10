@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: url("./background-hearts.webp")
+    center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+body.after-yes {
+  background: url('./after-yes.gif')
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.card {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  /* padding: 30px; */
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  /* width: 320px; */
+  animation: fadeIn 0.8s ease;
+}
+
+h1 {
+  margin: 15px 0;
+}
+
+.question-container {
+  position: relative; /* Important for absolute positioning */
+  min-height: 400px; /* Give enough space for button to move */
+  padding: 40px;
+}
+
+.button-container {
+  position: relative;
+  min-height: 100px; /* Space for button movement */
+}
+
+.local-gif,
+.gif-result {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.button-container1 {
+  margin-top: 20px;
+  position: relative;
+  height: 60px;
+  display: flex;
+}
+
+button {
+  padding: 10px 22px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.yes-btn {
+  background: linear-gradient(135deg, #ff5f9e, #ff8dc7);
+  color: white;
+}
+
+.no-btn {
+  background: #ca5cdd;
+  color: white;
+  position: absolute;
+  right: 0;
+}
+.button-container button {
+  width: 100px;
+  height: 48px;
+
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease;
+}
+.hidden {
+  display: none;
+}
+
+.result-container {
+  color: #FF2C97;
+  font-size: 10px;
+    animation: beat 1.5s infinite;
+
+}
+/* Loader */
+.loader {
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  background: red;
+  position: relative;
+  transform: rotate(45deg);
+  animation: pulse 1s infinite;
+  margin: 0 auto 10px;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -15px;
+  left: 0;
+}
+
+.heart::after {
+  left: -15px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(45deg); }
+  50% { transform: scale(1.2) rotate(45deg); }
+  100% { transform: scale(1) rotate(45deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
