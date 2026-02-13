@@ -6,8 +6,7 @@ body {
   margin: 0;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: url("./background-hearts.webp")
-    center/cover no-repeat;
+  background: url("./background-hearts.webp") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +14,9 @@ body {
 }
 
 body.after-yes {
-  background: url('./after-yes.gif')
+  background: url('./after-yes.gif') center/cover no-repeat;
 }
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -28,44 +28,59 @@ body.after-yes {
   z-index: 1;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(14px);
-  /* padding: 30px; */
   border-radius: 20px;
   text-align: center;
   color: #fff;
-  /* width: 320px; */
   animation: fadeIn 0.8s ease;
+}
+
+/* ✅ Add image sizing */
+.card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto 20px;
+  object-fit: contain; /* Maintain aspect ratio */
 }
 
 h1 {
   margin: 15px 0;
+  font-size: 24px;
+  line-height: 1.4;
 }
 
 .question-container {
-  position: relative; /* Important for absolute positioning */
-  min-height: 400px; /* Give enough space for button to move */
+  position: relative;
+  min-height: 450px; /* Increased for more space */
   padding: 40px;
+  width: 90%;
+  max-width: 450px;
 }
 
 .button-container {
   position: relative;
-  min-height: 100px; /* Space for button movement */
-}
-
-.local-gif,
-.gif-result {
-  width: 100%;
-  border-radius: 15px;
-}
-
-.button-container1 {
-  margin-top: 20px;
-  position: relative;
-  height: 60px;
+  min-height: 120px; /* More space for button movement */
   display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 button {
-  padding: 10px 22px;
+  width: 120px;
+  height: 48px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  position: relative; /* ✅ Important */
 }
 
 button:hover {
@@ -80,36 +95,32 @@ button:hover {
 .no-btn {
   background: #ca5cdd;
   color: white;
-  position: absolute;
-  right: 0;
+  /* ✅ Remove absolute positioning from here */
 }
-.button-container button {
-  width: 100px;
-  height: 48px;
 
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 0.2s ease;
-}
 .hidden {
   display: none;
 }
 
 .result-container {
   color: #FF2C97;
-  font-size: 10px;
-    animation: beat 1.5s infinite;
-
+  font-size: 20px; /* ✅ Increased from 10px */
+  animation: beat 1.5s infinite;
+  padding: 40px;
+  width: 90%;
+  max-width: 450px;
 }
+
+/* ✅ Add beat animation */
+@keyframes beat {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
+}
+
 /* Loader */
 .loader {
   z-index: 2;
@@ -157,4 +168,24 @@ button:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Responsive design */
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  .card img {
+    max-width: 250px;
+  }
+  
+  button {
+    width: 100px;
+    font-size: 14px;
+  }
 }
